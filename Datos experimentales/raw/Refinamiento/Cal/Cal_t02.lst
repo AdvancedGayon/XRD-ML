@@ -1,0 +1,74 @@
+Rietveld refinement to file(s) Cal_t02.xy
+BGMN version 4.2.22, 3390 measured points, 31 peaks, 80 parameters
+Start: Sun Feb  9 07:27:14 2025; End: Sun Feb  9 07:27:22 2025
+63 iteration steps
+
+Rp=19.84%  Rpb=35.34%  R=13.47%  Rwp=26.58% Rexp=24.26%
+Durbin-Watson d=1.71
+1-rho=8.38%
+
+Global parameters and GOALs
+****************************
+QCalcite=0.9950+-0.0016
+QGraphite2h=0.0050+-0.0016
+QGraphite3r=0
+EPS2=-0.000050+-0.000016
+
+Local parameters and GOALs for phase Calcite
+******************************************************
+SpacegroupNo=167
+HermannMauguin=R-32/c
+XrayDensity=2.711
+Rphase=3516.13%
+UNIT=NM
+A=0.498973+-0.000023
+C=1.70618+-0.00010
+k1=0
+GEWICHT=SPHAR8, MeanValue(GEWICHT)=0.0153186
+B1=ISOTROPIC=0.0000138875
+k2=ANISOSQR, MeanValue(k2)=0.00000132067, sqrt3(det(k2))=0.00000126581
+Atomic positions for phase Calcite
+---------------------------------------------
+  6     0.0000  0.0000  0.0000     E=(CA(1.0000))
+TDS=0.0192+-0.0024
+
+  6     0.0000  0.0000  0.2500     E=(C(1.0000))
+TDS=0.0084+-0.0050
+
+ 18     0.2563  0.0000  0.2500     E=(O(1.0000))
+x=0.2563+-0.0020
+TDS=0.0147+-0.0034
+
+
+Local parameters and GOALs for phase Graphite-2H
+******************************************************
+SpacegroupNo=194
+HermannMauguin=P6_3/m2/m2/c
+XrayDensity=2.290
+Rphase=8468.98%
+UNIT=NM
+A=0.24528+-0.00019
+C=0.66861+-0.00021
+B1=0
+GrainSize(1,1,1)=ERROR
+GEWICHT=0.000077+-0.000024
+Atomic positions for phase Graphite-2H
+---------------------------------------------
+  2     0.0000  0.0000  0.2500     E=(C(1.0000))
+  2     0.3333  0.6667  0.2500     E=(C(1.0000))
+
+Local parameters and GOALs for phase Graphite-3R
+******************************************************
+SpacegroupNo=166
+HermannMauguin=R-32/m
+XrayDensity=2.176
+Rphase=100.00%
+UNIT=NM
+A=UNDEF
+C=UNDEF
+B1=UNDEF
+GrainSize(1,1,1)=UNDEF
+GEWICHT=0.0
+Atomic positions for phase Graphite-3R
+---------------------------------------------
+  6     0.0000  0.0000  0.1667     E=(C(1.0000))

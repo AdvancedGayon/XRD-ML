@@ -1,0 +1,35 @@
+% SampleID: Cal_t05
+% Theoretical instrumental function
+VERZERR=GEGEMA_XRD_Default.geq
+% Wavelength
+LAMBDA=CU
+% Phases
+STRUC[1]=Calcite_0017593.str
+STRUC[2]=Graphite-2h.str
+STRUC[3]=Graphite-3r.str
+% Measured data
+VAL[1]=Cal_t05.xy
+% Minimum Angle (2theta)
+% WMIN=10
+% Maximum Angle (2theta)
+% WMAX=60
+% Result list output
+LIST=Cal_t05.lst
+% Peak list output
+OUTPUT=Cal_t05.par
+% Diagram output
+DIAGRAMM=Cal_t05.dia
+% Global parameters for zero point and sample displacement
+EPS1=0
+PARAM[1]=EPS2=0.0000010_-0.01^0.01
+NTHREADS=4
+PROTOKOLL=Y
+
+sum=Calcite+Graphite2h+Graphite3r
+QCalcite=Calcite/sum
+QGraphite2h=Graphite2h/sum
+QGraphite3r=Graphite3r/sum
+
+GOAL[1]=QCalcite
+GOAL[2]=QGraphite2h
+GOAL[3]=QGraphite3r

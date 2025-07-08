@@ -1,0 +1,74 @@
+Rietveld refinement to file(s) Cal_t05.xy
+BGMN version 4.2.22, 3390 measured points, 31 peaks, 80 parameters
+Start: Sun Feb  9 07:27:22 2025; End: Sun Feb  9 07:27:29 2025
+51 iteration steps
+
+Rp=14.57%  Rpb=27.42%  R=13.90%  Rwp=17.39% Rexp=15.32%
+Durbin-Watson d=1.60
+1-rho=3.66%
+
+Global parameters and GOALs
+****************************
+QCalcite=0.9925+-0.0014
+QGraphite2h=0.0042+-0.0012
+QGraphite3r=0.00327+-0.00089
+EPS2=-0.000025+-0.000011
+
+Local parameters and GOALs for phase Calcite
+******************************************************
+SpacegroupNo=167
+HermannMauguin=R-32/c
+XrayDensity=2.711
+Rphase=14.38%
+UNIT=NM
+A=0.498941+-0.000015
+C=1.706122+-0.000064
+k1=0
+GEWICHT=SPHAR8, MeanValue(GEWICHT)=0.0421390
+B1=ISOTROPIC=0.000380868
+k2=ANISOSQR, MeanValue(k2)=0.00000115306, sqrt3(det(k2))=0.00000113275
+Atomic positions for phase Calcite
+---------------------------------------------
+  6     0.0000  0.0000  0.0000     E=(CA(1.0000))
+TDS=0.0207+-0.0015
+
+  6     0.0000  0.0000  0.2500     E=(C(1.0000))
+TDS=0.0069+-0.0032
+
+ 18     0.2579  0.0000  0.2500     E=(O(1.0000))
+x=0.2579+-0.0013
+TDS=0.0145+-0.0022
+
+
+Local parameters and GOALs for phase Graphite-2H
+******************************************************
+SpacegroupNo=194
+HermannMauguin=P6_3/m2/m2/c
+XrayDensity=2.158
+Rphase=16.76%
+UNIT=NM
+A=0.25187+-0.00020
+C=0.67285+-0.00018
+B1=0.0002+-0.0011
+GrainSize(1,1,1)=2505+-16817
+GEWICHT=0.000179+-0.000050
+Atomic positions for phase Graphite-2H
+---------------------------------------------
+  2     0.0000  0.0000  0.2500     E=(C(1.0000))
+  2     0.3333  0.6667  0.2500     E=(C(1.0000))
+
+Local parameters and GOALs for phase Graphite-3R
+******************************************************
+SpacegroupNo=166
+HermannMauguin=R-32/m
+XrayDensity=2.331
+Rphase=17.60%
+UNIT=NM
+A=0.24326+-0.00025
+C=1.00152+-0.00032
+B1=0
+GrainSize(1,1,1)=ERROR
+GEWICHT=0.000139+-0.000038
+Atomic positions for phase Graphite-3R
+---------------------------------------------
+  6     0.0000  0.0000  0.1667     E=(C(1.0000))
