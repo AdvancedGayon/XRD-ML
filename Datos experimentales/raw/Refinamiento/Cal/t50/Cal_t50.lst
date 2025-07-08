@@ -1,0 +1,74 @@
+Rietveld refinement to file(s) Cal_t50.xy
+BGMN version 4.2.22, 3390 measured points, 31 peaks, 115 parameters
+Start: Sun Feb  9 07:31:00 2025; End: Sun Feb  9 07:31:46 2025
+100 iteration steps
+
+Rp=8.39%  Rpb=17.18%  R=14.95%  Rwp=6.78% Rexp=5.24%
+Durbin-Watson d=1.18
+1-rho=0.668%
+
+Global parameters and GOALs
+****************************
+QCalcite=0.9945+-0.0021
+QGraphite3r=0.0031+-0.0012
+QGraphite2h=0.00249+-0.00097
+EPS2=-0.0000005+-0.0000048
+
+Local parameters and GOALs for phase Calcite
+******************************************************
+SpacegroupNo=167
+HermannMauguin=R-32/c
+XrayDensity=2.711
+Rphase=7.23%
+UNIT=NM
+A=0.4989355+-0.0000064
+C=1.705899+-0.000027
+k1=0
+GEWICHT=SPHAR10, MeanValue(GEWICHT)=0.597468
+B1=ANISOLIN, MeanValue(B1)=0.000611286, sqrt3(det(B1))=0.000463896
+k2=ANISO4, MeanValue(k2)=0.00000110703
+Atomic positions for phase Calcite
+---------------------------------------------
+  6     0.0000  0.0000  0.0000     E=(CA(1.0000))
+TDS=0.01835+-0.00100
+
+  6     0.0000  0.0000  0.2500     E=(C(1.0000))
+TDS=0.0245+-0.0028
+
+ 18     0.2603  0.0000  0.2500     E=(O(1.0000))
+x=0.26028+-0.00095
+TDS=0.0067+-0.0022
+
+
+Local parameters and GOALs for phase Graphite-3R
+******************************************************
+SpacegroupNo=166
+HermannMauguin=R-32/m
+XrayDensity=2.313
+Rphase=6.19%
+UNIT=NM
+A=0.24426+-0.00015
+C=1.001243+-0.000095
+B1=0.00019+-0.00040
+GrainSize(1,1,1)=2203+-4630
+GEWICHT=0.00183+-0.00019
+Atomic positions for phase Graphite-3R
+---------------------------------------------
+  6     0.0000  0.0000  0.1667     E=(C(1.0000))
+
+Local parameters and GOALs for phase Graphite-2H
+******************************************************
+SpacegroupNo=194
+HermannMauguin=P6_3/m2/m2/c
+XrayDensity=2.264
+Rphase=8.72%
+UNIT=NM
+A=0.24607+-0.00011
+C=0.67209+-0.00012
+B1=0.00078+-0.00064
+GrainSize(1,1,1)=545+-451
+GEWICHT=0.00150+-0.00019
+Atomic positions for phase Graphite-2H
+---------------------------------------------
+  2     0.0000  0.0000  0.2500     E=(C(1.0000))
+  2     0.3333  0.6667  0.2500     E=(C(1.0000))
