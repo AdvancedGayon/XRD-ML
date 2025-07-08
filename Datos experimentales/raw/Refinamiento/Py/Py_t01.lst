@@ -1,0 +1,42 @@
+Rietveld refinement to file(s) Py_t01.xy
+BGMN version 4.2.22, 3390 measured points, 12 peaks, 44 parameters
+Start: Sun Feb 16 14:08:24 2025; End: Sun Feb 16 14:08:28 2025
+91 iteration steps
+
+Rp=14.53%  Rpb=87.40%  R=17.94%  Rwp=18.35% Rexp=18.24%
+Durbin-Watson d=1.97
+1-rho=45.2%
+
+Global parameters and GOALs
+****************************
+QPyrite=1.00000
+EPS2=-0.000086+-0.000034
+
+Local parameters and GOALs for phase Pyrite
+******************************************************
+SpacegroupNo=205
+HermannMauguin=P2_1/a-3
+XrayDensity=5.010
+Rphase=18.69%
+UNIT=NM
+A=0.541796+-0.000043
+B1=0
+GEWICHT=0.001218+-0.000050
+k2=ANISO4, MeanValue(k2)=0.000000172207
+Atomic positions for phase Pyrite
+---------------------------------------------
+  4     0.0000  0.0000  0.0000     E=(FE(1.0000))
+TDS=ANISO, vibrational matrice for 1st atomic position:
+ (beta dimensionless, U in nm**2)
+ beta[i,j]=(0.00445, 0.00434, 0.00434 U[i,j]=(0.0000662, 0.0000645, 0.0000645
+            0.00434, 0.00445, 0.00434         0.0000645, 0.0000662, 0.0000645
+            0.00434, 0.00434, 0.00445)        0.0000645, 0.0000645, 0.0000662)
+
+  8     0.3843  0.3843  0.3843     E=(S(1.0000))
+x=0.3843+-0.0014
+TDS=ANISO, vibrational matrice for 1st atomic position:
+ (beta dimensionless, U in nm**2)
+ beta[i,j]=(0.00000, 0.00000, 0.00000 U[i,j]=(0.0000000, 0.0000000, 0.0000000
+            0.00000, 0.00000, 0.00000         0.0000000, 0.0000000, 0.0000000
+            0.00000, 0.00000, 0.00000)        0.0000000, 0.0000000, 0.0000000)
+
