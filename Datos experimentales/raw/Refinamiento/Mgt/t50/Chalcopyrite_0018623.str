@@ -1,0 +1,10 @@
+PHASE=Chalcopyrite // amcsd0018623
+Reference=amcsd0018623 //
+Formula=Cu_Fe_S2 //
+SpacegroupNo=122 HermannMauguin=I-42d Setting=1 UniqueAxis=c Lattice=Tetragonal //
+PARAM=A=0.528563_0.523277^0.533849 PARAM=C=1.041917_1.031498^1.052336 //
+RP=4 k1=0 k2=0 PARAM=B1=0_0^0.01 GEWICHT=SPHAR4 //
+GOAL:Chalcopyrite=GEWICHT*ifthenelse(ifdef(d),exp(my*d*3/4),1) //
+E=CU Wyckoff=a x=0.000000 y=0.000000 z=0.000000 TDS=0.003790
+E=FE Wyckoff=b x=0.000000 y=0.000000 z=0.500000 TDS=0.003869
+E=S Wyckoff=d x=0.252900 y=0.250000 z=0.125000 TDS=0.004185

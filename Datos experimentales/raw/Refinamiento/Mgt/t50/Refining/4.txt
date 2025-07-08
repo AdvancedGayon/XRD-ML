@@ -1,0 +1,237 @@
+PARAM[1]=EPS2=-0.000088_-0.01^0.01
+
+// turbostratically disordered smectite
+// d(001) approx. 15 A
+// structure of TOT layer (cis-vacant):
+// Tsipurski et al., Clay Minerals 19(1984), 177-193 (modified)
+// model for turbostratic disorder:
+// Ufer et al., ZKristallogr. 219(2004), 519-527
+// 
+PHASE=smectitedi2w  SpacegroupNo=5 HermannMauguin=C121
+PARAM=A=0.507000_0.497^0.531 PARAM=B=1.0282_0.894^1.11 PARAM=c0=1.503_1.45^1.6
+PARAM=BETA=85_70.198^121.202
+pi==2*acos(0)
+RP=4
+layer==10  // layer: factor for elongation in c direction 
+C=c0*layer // C: lattice parameter c for supercell
+PARAM=b10=0_0^0.015 // isotropic broadening of hkl reflections
+PARAM=b1l=0_0^0.1  // separate broadening of 00l reflections
+B1=ifthenelse(and(eq(h,0),eq(k,0)),b10+b1l,b10)
+// K20: strain broadening of hkl lines
+PARAM=K20=0.0000000100000_0.000000001^0.0002
+// K2l: strain broadening of 00l lines
+PARAM=K2l=0.000245_0^0.001
+breit2=1/sqr(C) // additional l-dependent broadening to avoid "ripples"
+GEWICHT=SPHAR4 // refining the scale factor
+// definition of the helper variable "smectite..." for calculation of phase abundances
+GOAL:smectitedi2wfix=GEWICHT
+// squared lorentzian (Gauss-like) broadening
+B2=cat(R2==sqr(h/A)+sqr(k/B),Z2==max(sqr(sk)-R2,0),
+orientierung2==Z2/sqr(sk),
+ifthenelse(and(eq(h,0),eq(k,0)),K2l*sqr(sk),K20*sqr(sk)+breit2*orientierung2))
+//
+// scaling of classes (00l und hkl) and removal of redundant 00l reflections
+GEWICHT[1]=GEWICHT*ifthenelse(and(eq(h,0),eq(k,0)),
+ifthenelse(mod(l,layer),0,layer),1)
+//
+// === occupancies =====================
+// --- octahedra position -------
+pMG=0.1 PARAM=pFE=0.600000_0^0.6 pAL=(1-pMG-pFE)  
+PARAM=ptrans=0_0.0^1.0     // mixing parameter for cis- and trans-vacancy; 0 => trans-vacant
+//
+// --- interlayer ---------------
+PARAM=pCA=0.03_0^0.4                       
+pOZ=pCA
+//
+// ==== rigid body of the interlayer complex =====================
+//    cation, octahedrally surrounded by 6 oxygen (water)
+// definition of the positions in cartesian co-ordinates
+// 
+dCAO=0.241        // distance cation - oxygen
+//
+set(ECA,0,0,0)      // cation in the middle of the interlayer
+set(EOZ1,0,0,dCAO)   // O above
+set(EOZ2,0,0,-dCAO)   // O below
+set(EOZ3,dCAO,0,0)
+set(EOZ4,-dCAO,0,0)
+set(EOZ5,0,dCAO,0)
+set(EOZ6,0,-dCAO,0)
+// 0.6892: shifting of the interlayer complex in x fixed
+// 0.2092: shifting of the interlayer complex in y fixed
+// the first two Eulerian angles rotate the interlayer octahedra
+//  with two planes parallel to the xy plane
+// -18.42: the 3th eulerian angle was fixed at this value
+// the 3th eulerian angle is a rotation around the cartesian z-axis 
+// which is perpendicular to the xy-plane
+// shifting and rotation of the rigid body
+T(0.6892,0.2092,0.5*c0*sin(pi*BETA/180),45,180*acos(1/sqrt(3))/pi,-18.42,
+ECA,EOZ1,EOZ2,EOZ3,EOZ4,EOZ5,EOZ6) 
+//
+// --- isotropic temperature factors (nm^2), estimated -------------------------------
+//
+tdsint=0.015
+tdsH2O=0.015
+tdsoct=0.01
+tdstet=0.005
+tdso=0.01
+//
+// --- positions -------------------------- 
+//  absolute positions in c-direction [nm]
+//  to avoid a stretching/shortening of the TOT layer by varying c0
+// 
+zT=0.271350
+zO11=0.10955
+zO12=0.10553
+zO2=0.33668
+// 
+E=(AL+3(ptrans*pAL),MG+2(ptrans*pMG),FE+3(ptrans*pFE)) Wyckoff=a y=0.0 TDS=tdsoct         // trans
+E=(AL+3((1-ptrans)*pAL),MG+2((1-ptrans)*pMG),FE+3((1-ptrans)*pFE)) Wyckoff=a y=0.6540 TDS=tdsoct // cis
+E=(AL+3(pAL),MG+2(pMG),FE+3(pFE)) Wyckoff=a y=0.3210 TDS=tdsoct                      // cis, always occupied
+E=(SI+4(0.9375),AL+3(0.0625)) Wyckoff=c x=0.4320 y=0.3330 z=zT/(layer*c0) TDS=tdstet 
+E=(SI+4(0.9375),AL+3(0.0625)) Wyckoff=c x=0.4320 y=0.6620 z=zT/(layer*c0) TDS=tdstet 
+E=O-1 Wyckoff=c x=0.1730 y=0.7250 z=zO2/(layer*c0) TDS=tdso
+E=O-1 Wyckoff=c x=0.1700 y=0.2680 z=zO2/(layer*c0) TDS=tdso
+E=O-1 Wyckoff=c x=0.4170 y=0.6560 z=zO11/(layer*c0) TDS=tdso
+E=O-1 Wyckoff=c x=0.3430 y=0.3470 z=zO11/(layer*c0) TDS=tdso
+E=O-1 Wyckoff=c x=0.3340 y=0.9760 z=zO12/(layer*c0) TDS=tdso
+E=O-1 Wyckoff=c x=0.4890 y=0.4960 z=zO2/(layer*c0) TDS=tdso
+// 
+// list of interlayer positions
+// 
+E=CA+2(pCA) Wyckoff=c x=X(ECA) y=Y(ECA) z=Z(ECA)   TDS=tdsint
+E=O-2(pOZ)  Wyckoff=c x=X(EOZ1) y=Y(EOZ1) z=Z(EOZ1)   TDS=tdsH2O
+E=O-2(pOZ)  Wyckoff=c x=X(EOZ2) y=Y(EOZ2) z=Z(EOZ2)   TDS=tdsH2O
+E=O-2(pOZ)  Wyckoff=c x=X(EOZ3) y=Y(EOZ3) z=Z(EOZ3)   TDS=tdsH2O
+E=O-2(pOZ)  Wyckoff=c x=X(EOZ4) y=Y(EOZ4) z=Z(EOZ4)   TDS=tdsH2O
+E=O-2(pOZ)  Wyckoff=c x=X(EOZ5) y=Y(EOZ5) z=Z(EOZ5)   TDS=tdsH2O
+E=O-2(pOZ)  Wyckoff=c x=X(EOZ6) y=Y(EOZ6) z=Z(EOZ6)   TDS=tdsH2O
+
+PHASE=Calcite // amcsd0009890
+Reference=amcsd0009890 //
+Formula=Ca_C_O3 //
+SpacegroupNo=167 HermannMauguin=R-32/c Setting=1 UniqueAxis=c Lattice=Trigonal //
+PARAM=A=0.498984_0.493812^0.503788 PARAM=C=1.70381_1.689732^1.723868 //
+RP=4 k1=0 PARAM=k2=0.00000231_0^0.0001 PARAM=B1=0.00236_0^0.01 GEWICHT=SPHAR6 //
+GOAL:Calcite=GEWICHT*ifthenelse(ifdef(d),exp(my*d*3/4),1) //
+E=CA Wyckoff=b x=0.000000 y=0.000000 z=0.000000 PARAM=TDS=0.0500000_0^0.07
+E=C Wyckoff=a x=0.000000 y=0.000000 z=0.250000 PARAM=TDS=0_0^0.05
+E=O Wyckoff=e PARAM=x=0.2423_0.2070^0.3070 y=0.000000 z=0.250000 PARAM=TDS=0_0^0.05
+
+PHASE=Chlorite // amcsd0000162
+Reference=amcsd0000162 //
+Formula=Mg3_Si2_O9_H4 //
+SpacegroupNo=1 HermannMauguin=C1 Setting=2 Lattice=Triclinic //
+PARAM=A=0.53802_0.528165^0.538835 PARAM=B=0.914760_0.910760^0.933240 PARAM=C=2.8561_2.844765^2.902235 //
+PARAM=ALPHA=90.06_89.100000^90.900000 PARAM=BETA=96.47_89.100000^100.900000 PARAM=GAMMA=90.63_89.100000^90.900000 //
+RP=4 k1=0 PARAM=k2=0.0000142_0^0.0001 B1=ANISO^0.01 GEWICHT=SPHAR6 //
+GOAL:Chlorite=GEWICHT*ifthenelse(ifdef(d),exp(my*d*3/4),1) //
+E=MG Wyckoff=a x=0.000000 y=0.000000 z=0.000000 TDS=0.010000 // check Wyckoff
+E=MG Wyckoff=a x=0.007000 y=0.329000 z=0.002000 TDS=0.010000
+E=MG Wyckoff=a x=0.987000 y=0.660000 z=0.996000 TDS=0.010000
+E=MG Wyckoff=a x=0.164000 y=0.170000 z=0.250000 TDS=0.010000 // check Wyckoff
+E=MG Wyckoff=a x=0.180000 y=0.502000 z=0.250000 TDS=0.010000 // check Wyckoff
+E=MG Wyckoff=a x=0.176000 y=0.832000 z=0.250000 TDS=0.010000 // check Wyckoff
+E=MG Wyckoff=a x=0.021000 y=0.992000 z=0.498000 TDS=0.010000
+E=MG Wyckoff=a x=0.984000 y=0.329000 z=0.496000 TDS=0.010000
+E=MG Wyckoff=a x=0.015000 y=0.656000 z=0.497000 TDS=0.010000
+E=MG Wyckoff=a x=0.338000 y=0.002000 z=0.750000 TDS=0.010000 // check Wyckoff
+E=MG Wyckoff=a x=0.345000 y=0.335000 z=0.750000 TDS=0.010000 // check Wyckoff
+E=MG Wyckoff=a x=0.348000 y=0.668000 z=0.750000 TDS=0.010000 // check Wyckoff
+E=SI Wyckoff=a x=0.336000 y=0.338000 z=0.152000 TDS=0.010000
+E=SI Wyckoff=a x=0.339000 y=0.672000 z=0.154000 TDS=0.010000
+E=SI Wyckoff=a x=0.004000 y=0.001000 z=0.348000 TDS=0.010000
+E=SI Wyckoff=a x=0.006000 y=0.671000 z=0.344000 TDS=0.010000
+E=SI Wyckoff=a x=0.170000 y=0.167000 z=0.656000 TDS=0.010000
+E=SI Wyckoff=a x=0.170000 y=0.837000 z=0.653000 TDS=0.010000
+E=SI Wyckoff=a x=0.992000 y=0.005000 z=0.844000 TDS=0.010000
+E=SI Wyckoff=a x=0.992000 y=0.671000 z=0.845000 TDS=0.010000
+E=O Wyckoff=a x=0.098000 y=0.760000 z=0.132000 TDS=0.010000
+E=O Wyckoff=a x=0.590000 y=0.730000 z=0.138000 TDS=0.010000
+E=O Wyckoff=a x=0.322000 y=0.512000 z=0.138000 TDS=0.010000
+E=O Wyckoff=a x=0.333000 y=0.333000 z=0.214000 TDS=0.010000 // check Wyckoff
+E=O Wyckoff=a x=0.333000 y=0.667000 z=0.214000 TDS=0.010000
+E=O Wyckoff=a x=0.215000 y=0.570000 z=0.371000 TDS=0.010000
+E=O Wyckoff=a x=0.739000 y=0.620000 z=0.358000 TDS=0.010000
+E=O Wyckoff=a x=0.514000 y=0.316000 z=0.369000 TDS=0.010000
+E=O Wyckoff=a x=0.000000 y=0.000000 z=0.286000 TDS=0.010000 // check Wyckoff
+E=O Wyckoff=a x=0.000000 y=0.667000 z=0.286000 TDS=0.010000 // check Wyckoff
+E=O Wyckoff=a x=0.410000 y=0.732000 z=0.640000 TDS=0.010000
+E=O Wyckoff=a x=0.914000 y=0.758000 z=0.634000 TDS=0.010000
+E=O Wyckoff=a x=0.678000 y=0.508000 z=0.640000 TDS=0.010000
+E=O Wyckoff=a x=0.167000 y=0.167000 z=0.714000 TDS=0.010000 // check Wyckoff
+E=O Wyckoff=a x=0.167000 y=0.833000 z=0.714000 TDS=0.010000
+E=O Wyckoff=a x=0.278000 y=0.621000 z=0.859000 TDS=0.010000
+E=O Wyckoff=a x=0.778000 y=0.571000 z=0.872000 TDS=0.010000
+E=O Wyckoff=a x=0.450000 y=0.328000 z=0.867000 TDS=0.010000
+E=O Wyckoff=a x=0.000000 y=0.000000 z=0.786000 TDS=0.010000 // check Wyckoff
+E=O Wyckoff=a x=0.000000 y=0.667000 z=0.786000 TDS=0.010000 // check Wyckoff
+E=O Wyckoff=a x=0.386000 y=0.002000 z=0.967000 TDS=0.010000 // O-H1
+E=O Wyckoff=a x=0.366000 y=0.347000 z=0.967000 TDS=0.010000 // O-H2
+E=O Wyckoff=a x=0.378000 y=0.667000 z=0.967000 TDS=0.010000 // O-H3
+E=O Wyckoff=a x=0.172000 y=0.155000 z=0.034000 TDS=0.010000 // O-H4
+E=O Wyckoff=a x=0.156000 y=0.504000 z=0.034000 TDS=0.010000 // O-H5
+E=O Wyckoff=a x=0.154000 y=0.826000 z=0.034000 TDS=0.010000 // O-H6
+E=O Wyckoff=a x=0.333000 y=0.000000 z=0.214000 TDS=0.010000 // O-H7, check Wyckoff
+E=O Wyckoff=a x=0.000000 y=0.333000 z=0.286000 TDS=0.010000 // O-H8, check Wyckoff
+E=O Wyckoff=a x=0.168000 y=0.167000 z=0.467000 TDS=0.010000 // O-H9
+E=O Wyckoff=a x=0.140000 y=0.505000 z=0.467000 TDS=0.010000 // O-H10
+E=O Wyckoff=a x=0.166000 y=0.843000 z=0.467000 TDS=0.010000 // O-H11
+E=O Wyckoff=a x=0.363000 y=0.002000 z=0.534000 TDS=0.010000 // O-H12
+E=O Wyckoff=a x=0.371000 y=0.327000 z=0.534000 TDS=0.010000 // O-H13
+E=O Wyckoff=a x=0.384000 y=0.648000 z=0.534000 TDS=0.010000 // O-H14
+E=O Wyckoff=a x=0.167000 y=0.500000 z=0.714000 TDS=0.010000 // O-H15, check Wyckoff
+E=O Wyckoff=a x=0.000000 y=0.333000 z=0.786000 TDS=0.010000 // O-H16, check Wyckoff
+
+PHASE=Magnetite // amcsd0002400
+Reference=amcsd0002400 //
+Formula=Fe3_O4 //
+SpacegroupNo=227 HermannMauguin=F4_1/d-32/m Setting=2 OriginChoice=2 Lattice=Cubic //
+PARAM=A=0.839574_0.831253^0.848047 //
+RP=4 k1=0 PARAM=k2=0.000000545_0^0.0001 PARAM=B1=0.00029_0^0.01 GEWICHT=SPHAR6 //
+GOAL:Magnetite=GEWICHT*ifthenelse(ifdef(d),exp(my*d*3/4),1) //
+E=FE Wyckoff=a x=0.125000 y=0.125000 z=0.125000 PARAM=TDS=0_0^0.02
+E=FE Wyckoff=d x=0.500000 y=0.500000 z=0.500000 PARAM=TDS=0.0200000_0^0.05
+E=O Wyckoff=e PARAM=x=0.25286_0.2049^0.3049 PARAM=TDS=0_0^0.05
+
+PHASE=Andradite // amcsd0007865
+Reference=amcsd0007865 //
+Formula=Fe3.92_Ca1.08_Si3_O12 //
+SpacegroupNo=230 HermannMauguin=I4_1/a-32/d Setting=1 Lattice=Cubic //
+PARAM=A=1.204601_1.183080^1.206980 //
+RP=4 k1=0 k2=0 PARAM=B1=0.00122_0^0.01 GEWICHT=SPHAR4 //
+GOAL:Andradite=GEWICHT*ifthenelse(ifdef(d),exp(my*d*3/4),1) //
+E=(FE(0.6400),CA(0.3600)) Wyckoff=c x=0.125000 y=0.000000 z=0.250000 TDS=0.007948
+E=FE Wyckoff=a x=0.000000 y=0.000000 z=0.000000 TDS=0.004658
+E=SI Wyckoff=d x=0.375000 y=0.000000 z=0.250000 TDS=0.004579
+E=O Wyckoff=h x=0.037800 y=0.049800 z=0.656100 TDS=0.006764
+
+PHASE=Talc // amcsd_0010839
+Reference=amcsd_0010839 //
+Formula=Si4_Mg3_O12_H2 //
+SpacegroupNo=2 HermannMauguin=C-1 Setting=2 Lattice=Triclinic //
+PARAM=A=0.520710_0.500710^0.534290 PARAM=B=0.92250_0.908127^0.926473 PARAM=C=0.94333_0.936540^0.955460 //
+PARAM=ALPHA=89.5554_88.555400^91.364600 PARAM=BETA=97.6902_96.690200^99.666800 PARAM=GAMMA=91.163_89.189100^100.990900 //
+RP=4 k1=0 PARAM=k2=0.0000152_0^0.0001 PARAM=B1=0_0^0.01 GEWICHT=SPHAR6 //
+GOAL:Talc=GEWICHT*ifthenelse(ifdef(d),exp(my*d*3/4),1) //
+E=H Wyckoff=i x=0.719000 y=0.669000 z=0.203000 TDS=0.006001
+E=MG Wyckoff=a x=0.000000 y=0.000000 z=0.000000 TDS=0.010000
+E=MG Wyckoff=i x=0.500120 y=0.833333 z=0.999940 TDS=0.010000 // check Wyckoff
+E=O Wyckoff=i x=0.199100 y=0.834400 z=0.117600 TDS=0.010000
+E=O Wyckoff=i x=0.697000 y=0.667400 z=0.112600 TDS=0.010000
+E=O Wyckoff=i x=0.198000 y=0.501200 z=0.117600 TDS=0.010000
+E=O Wyckoff=i x=0.019900 y=0.928700 z=0.348100 TDS=0.010000
+E=O Wyckoff=i x=0.520200 y=0.910900 z=0.349400 TDS=0.010000
+E=O Wyckoff=i x=0.242900 y=0.669900 z=0.348400 TDS=0.010000
+E=SI Wyckoff=i x=0.245270 y=0.502590 z=0.290930 TDS=0.010000
+E=SI Wyckoff=i x=0.245900 y=0.835870 z=0.291080 TDS=0.010000
+
+PHASE=Quartz // amcsd_0015462
+Reference=amcsd_0015462 //
+Formula=Si_O2 //
+SpacegroupNo=152 HermannMauguin=P3_121 Setting=1 UniqueAxis=c Lattice=Trigonal //
+PARAM=A=0.491400_0.486486^0.496314 PARAM=C=0.540600_0.535194^0.546006 //
+RP=4 k1=0 k2=0 PARAM=B1=0_0^0.01 GEWICHT=SPHAR4 //
+GOAL:Quartz=GEWICHT*ifthenelse(ifdef(d),exp(my*d*3/4),1) //
+E=O Wyckoff=c x=0.413000 y=0.266800 z=0.214000 TDS=0.008598
+E=SI Wyckoff=a x=0.469900 y=0.000000 z=0.333333 TDS=0.005101
+

@@ -1,0 +1,10 @@
+PHASE=Calcite // amcsd0009890
+Reference=amcsd0009890 //
+Formula=Ca_C_O3 //
+SpacegroupNo=167 HermannMauguin=R-32/c Setting=1 UniqueAxis=c Lattice=Trigonal //
+PARAM=A=0.498577_0.493812^0.503788 PARAM=C=1.70462_1.689732^1.723868 //
+RP=4 k1=0 k2=0 PARAM=B1=0.00379_0^0.01 GEWICHT=SPHAR2 //
+GOAL:Calcite=GEWICHT*ifthenelse(ifdef(d),exp(my*d*3/4),1) //
+E=CA Wyckoff=b x=0.000000 y=0.000000 z=0.000000 PARAM=TDS=0.007654_0^0.02
+E=C Wyckoff=a x=0.000000 y=0.000000 z=0.250000 PARAM=TDS=0.007232_0^0.02
+E=O Wyckoff=e PARAM=x=0.2600_0.2070^0.3070 y=0.000000 z=0.250000 PARAM=TDS=0.0200000_0^0.05

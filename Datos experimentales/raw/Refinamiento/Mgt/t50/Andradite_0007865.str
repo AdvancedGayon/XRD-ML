@@ -1,0 +1,11 @@
+PHASE=Andradite // amcsd0007865
+Reference=amcsd0007865 //
+Formula=Fe3.92_Ca1.08_Si3_O12 //
+SpacegroupNo=230 HermannMauguin=I4_1/a-32/d Setting=1 Lattice=Cubic //
+PARAM=A=1.204601_1.183080^1.206980 //
+RP=4 k1=0 k2=0 PARAM=B1=0.00122_0^0.01 GEWICHT=SPHAR4 //
+GOAL:Andradite=GEWICHT*ifthenelse(ifdef(d),exp(my*d*3/4),1) //
+E=(FE(0.6400),CA(0.3600)) Wyckoff=c x=0.125000 y=0.000000 z=0.250000 TDS=0.007948
+E=FE Wyckoff=a x=0.000000 y=0.000000 z=0.000000 TDS=0.004658
+E=SI Wyckoff=d x=0.375000 y=0.000000 z=0.250000 TDS=0.004579
+E=O Wyckoff=h x=0.037800 y=0.049800 z=0.656100 TDS=0.006764
