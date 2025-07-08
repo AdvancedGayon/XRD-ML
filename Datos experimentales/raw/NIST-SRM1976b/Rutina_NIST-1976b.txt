@@ -1,0 +1,9 @@
+Job ID	Position	Sample ID	Experiment Name	Script Name	Result File Name	Status Messages	Start Time	End Time	Measurement Time	Progress	Priority	Mode
+3535		NIST-SRM1976b_t50	..\PWXRD_t50_W1000_4-70.bsml		..\NIST-SRM1976b_t50.brml	Active	2:26:06 PM	2:55:44 PM	29m 38s	1/1 11 %	Normal	
+3536		NIST-SRM1976b_t25	..\PWXRD_t25_W1000_4-70.bsml		..\NIST-SRM1976b_t25.brml	Waiting	2:55:44 PM	3:10:39 PM	14m 55s		Normal	
+3537		NIST-SRM1976b_t20	..\PWXRD_t20_W1000_4-70.bsml		..\NIST-SRM1976b_t20.brml	Waiting	3:10:39 PM	3:22:49 PM	12m 09s		Normal	
+3538		NIST-SRM1976b_t15	..\PWXRD_t15_W1000_4-70.bsml		..\NIST-SRM1976b_t15.brml	Waiting	3:22:49 PM	3:29:05 PM	6m 16s		Normal	
+3539		NIST-SRM1976b_t10	..\PWXRD_t10_W1000_4-70.bsml		..\NIST-SRM1976b_t10.brml	Waiting	3:29:05 PM	3:35:10 PM	6m 05s		Normal	
+3540		NIST-SRM1976b_t05	..\PWXRD_t05_W1000_4-70.bsml		..\NIST-SRM1976b_t05.brml	Waiting	3:35:10 PM	3:38:17 PM	3m 07s		Normal	
+3541		NIST-SRM1976b_t02	..\PWXRD_t02_W1000_4-70.bsml		..\NIST-SRM1976b_t02.brml	Waiting	3:38:17 PM	3:39:38 PM	1m 20s		Normal	
+3542		NIST-SRM1976b_t01	..\PWXRD_t01_W1000_4-70.bsml		..\NIST-SRM1976b_t01.brml	Waiting	3:39:38 PM	3:40:24 PM	45 s		Normal	
