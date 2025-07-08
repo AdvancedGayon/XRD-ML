@@ -1,0 +1,29 @@
+% SampleID: Qz_t10
+% Theoretical instrumental function
+VERZERR=GEGEMA_XRD_Default.geq
+% Wavelength
+LAMBDA=CU
+% Phases
+STRUC[1]=Qz_RRUFF_0018049.str
+% Measured data
+VAL[1]=Qz_t10.xy
+% Minimum Angle (2theta)
+% WMIN=10
+% Maximum Angle (2theta)
+% WMAX=60
+% Result list output
+LIST=Qz_t10.lst
+% Peak list output
+OUTPUT=Qz_t10.par
+% Diagram output
+DIAGRAMM=Qz_t10.dia
+% Global parameters for zero point and sample displacement
+EPS1=0
+PARAM[1]=EPS2=-0.0000149_-0.01^0.01
+NTHREADS=4
+PROTOKOLL=Y
+
+sum=Quartz
+QQuartz=Quartz/sum
+
+GOAL[1]=QQuartz

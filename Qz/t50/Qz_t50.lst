@@ -1,0 +1,39 @@
+Rietveld refinement to file(s) Qz_t50.xy
+BGMN version 4.2.22, 3390 measured points, 27 peaks, 109 parameters
+Start: Sat Feb 15 22:46:45 2025; End: Sat Feb 15 22:47:19 2025
+94 iteration steps
+
+Rp=10.69%  Rpb=19.25%  R=14.65%  Rwp=6.96% Rexp=4.29%
+Durbin-Watson d=1.11
+1-rho=0.593%
+
+Global parameters and GOALs
+****************************
+QQuartz=1.00000
+EPS2=0.0000058+-0.0000027
+
+Local parameters and GOALs for phase Quartz
+******************************************************
+SpacegroupNo=152
+HermannMauguin=P3_121
+XrayDensity=2.647
+Rphase=8.30%
+UNIT=NM
+A=0.4914775+-0.0000042
+C=0.5405946+-0.0000061
+k1=1.00000
+GEWICHT=SPHAR10, MeanValue(GEWICHT)=0.819369
+B1=ANISOLIN, MeanValue(B1)=0.000480192, sqrt3(det(B1))=0.000478897
+k2=ANISO4, MeanValue(k2)=0.000000455794
+Atomic positions for phase Quartz
+---------------------------------------------
+  3     0.4872  0.0000  0.3333     E=(SI(1.0000))
+x=0.4872+-0.0019
+TDS=0.0001+-0.0020
+
+  6     0.4226  0.2738  0.2256     E=(O(1.0000))
+x=0.4226+-0.0051
+y=0.2738+-0.0037
+z=0.2256+-0.0034
+TDS=0
+
